@@ -1,4 +1,4 @@
-package com.thoughtworks.refactor;
+package com.tw.academy;
 
 import java.util.Arrays;
 
