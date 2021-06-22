@@ -6,12 +6,25 @@ group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
+    maven { url 'https://maven.aliyun.com/repository/public' }
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation(platform('org.junit:junit-bom:5.7.2'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+
+    testCompile 'org.assertj:assertj-core:3.10.0'
+    testImplementation 'com.approvaltests:approvaltests:5.0.0'
 }
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
 
 apply from: 'checkstyle.gradle'
 
